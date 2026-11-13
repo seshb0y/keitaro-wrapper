@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Кампания {{ campaign_id }} — Keitaro wrapper{% endblock %}
+{% block content %}
+<div class="crumbs"><a href="/">Кампании</a> / <span id="c-name">#{{ campaign_id }}</span> / Потоки</div>
+<div class="toolbar">
+  <button class="btn" id="fetch">⟳ Загрузить потоки из Keitaro</button>
+  <a class="btn" id="open-kt" target="_blank" rel="noopener">Открыть в Keitaro ↗</a>
+  <span class="muted" id="c-meta"></span>
+</div>
+<div id="streams" data-campaign="{{ campaign_id }}"><p class="muted">Загрузка…</p></div>
+{% endblock %}
+{% block scripts %}<script src="/static/campaign.js"></script>{% endblock %}

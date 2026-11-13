@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Кампании — Keitaro wrapper{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>Новая кампания</h1>
+  <form id="create-form" class="form" autocomplete="off">
+    <label>Название
+      <div class="prefixed"><span id="prefix" class="prefix"></span><input name="name" required placeholder="campaign1"></div>
+    </label>
+    <label>Гео
+      <input name="geo" required placeholder="MX, AU, RO">
+      <small>Двухбуквенные коды стран через запятую — их трафик уйдёт на Google</small>
+    </label>
+    <label>Оффер
+      <div class="ac" id="offer-ac"><input placeholder="Поиск по названию или ID" required></div>
+      <small>Второй поток отправит весь остальной трафик на этот оффер</small>
+    </label>
+    <div class="row3">
+      <label>Группа <select name="group_id"></select><small data-note="groups"></small></label>
+      <label>Домен <select name="domain_id"></select><small data-note="domains"></small><small>Не задан — кампания работает на домене трекера</small></label>
+      <label>Источник <select name="traffic_source_id"></select><small data-note="traffic_sources"></small></label>
+    </div>
+    <button class="btn primary" type="submit">Создать</button>
+  </form>
+</section>
+
+<section class="card">
+  <div class="card-head">
+    <h2>Кампании в Keitaro</h2>
+    <div class="toolbar">
+      <label class="check"><input type="checkbox" id="mine" checked> только с префиксом <span class="js-prefix"></span></label>
+      <button class="btn" id="reload">Обновить</button>
+    </div>
+  </div>
+  <table class="table">
+    <thead><tr><th>ID</th><th>Название</th><th>Гео</th><th>Группа</th><th></th></tr></thead>
+    <tbody id="campaigns"><tr><td colspan="5" class="muted">Загрузка…</td></tr></tbody>
+  </table>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/index.js"></script>{% endblock %}
